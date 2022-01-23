@@ -16,7 +16,7 @@ public class TestWordlists extends TestCase {
 		
 		//Try to open a PDF using a wordlist that contains
 		//the password, make sure we can open the file
-		
+		System.out.println("Working dir is: " + System.getProperty("user.dir"));
 		assertEquals(PdfCrackerTest.cracker.crackViaWordlistFile(SUCCESS_WORDLIST), PASSWORD);
 		
 	}

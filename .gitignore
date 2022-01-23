@@ -2,3 +2,13 @@
 .project
 .classpath
 bin/
+
+.DS_Store
+**/.DS_Store
+
+build/
+out/
+.gradle/
+
+# Ignore the Runner class -> it's for local use only at this time
+**/Runner.java
