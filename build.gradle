@@ -1,0 +1,30 @@
+plugins {
+    id 'java-library'
+}
+
+group 'com.crepezzi'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs =  ['src']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['test/java']
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.itextpdf:kernel:7.2.1'
+    runtimeOnly 'org.bouncycastle:bcprov-jdk15on:1.70'
+    testImplementation 'junit:junit:4.12'
+    runtimeOnly 'org.slf4j:slf4j-simple:1.7.33'
+}

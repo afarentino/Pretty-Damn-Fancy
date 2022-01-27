@@ -1,1 +1,4 @@
-* Build a CLI
+* Build a CLI (command-line interface)
+* Add additional execution styles
+* Build a UI and or port to other JVM languages
+* Complete multi-threaded support - Create additional Runnable classes capable of executing each core style in a thread

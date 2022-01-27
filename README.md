@@ -2,8 +2,16 @@
 
 Java PDF Brute Force Cracker.  Works with wordlist or alphabet, to repeatedly attempt to open a PDF file.  This was hacked together to solve a day's problem, and maybe it'll be useful to someone else.
 
-Introduced in [this blog post](http://blog.johncrepezzi.com/archives/118)
+Introduced by the original author in [this blog post](http://seejohncode.com/2010/02/13/java-pdf-cracker/)
 
+## 2022 Update
+* Forked to modernize the project.  I had a similar issue with a
+  forgotten PDF password when I found John's open-source project.
+* Before the code could work against newer PDF's locked 
+* with an open password, it's core library needed to be upgraded to iText 7. 
+* Being a good web citizen, re-releasing these contributions under the same MIT
+* License in case others find it useful 
+  to extend or reuse.
 ---
 
 ## Provides the following cracking methods:
@@ -20,15 +28,15 @@ Introduced in [this blog post](http://blog.johncrepezzi.com/archives/118)
 
 ### Dependencies
 
-* iText
+* iText 7
 * BouncyCastle
 
 ---
 
-### Author
+### Author(s)
 
 * John Crepezzi [john.crepezzi@gmail.com](mailto:john.crepezzi@gmail.com)
-
+* Tony Castrogiovanni [afarentino@gmail.com](mailto:afarentino@gmail.com)
 ---
 
 ### License

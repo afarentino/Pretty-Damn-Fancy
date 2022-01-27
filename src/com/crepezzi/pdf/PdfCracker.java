@@ -1,19 +1,46 @@
 /*
-    John Crepezzi (c) 2009
+    Original work Copyright (c) 2009 by John Crepezzi
     <john@crepezzi.com>
+
+    Modified work Copyright (c) 2022 by Tony Castrogiovanni
+    <afarentino@gmail.com>
+
+    Permission is hereby granted, free of charge, to any person
+    obtaining a copy of this software and associated documentation
+    files (the "Software"), to deal in the Software without
+    restriction, including without limitation the rights to use,
+    copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the
+    Software is furnished to do so, subject to the following
+    conditions:
+
+    The above copyright notice and this permission notice shall be
+    included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+    OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+    WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+    OTHER DEALINGS IN THE SOFTWARE.
+
 */
 package com.crepezzi.pdf;
 
-import com.itextpdf.text.exceptions.BadPasswordException;
-import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.ReaderProperties;
+import com.itextpdf.kernel.pdf.PdfDocument;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
+
 import java.io.IOException;
 import java.util.Collection;
 
 /**
- *
- * @author based
+ * Core PDFCracker algorithms
  */
 class PdfCracker {
 
@@ -42,10 +69,15 @@ class PdfCracker {
 
         try {
             //attempt to open the reader stream
-            PdfReader reader = new PdfReader(this.filename, password.getBytes());
-            reader.close();
+            //PdfReader reader = new PdfReader(this.filename, password.getBytes());
+            byte[] passwordBytes = password.getBytes();
+            ReaderProperties props = new ReaderProperties();
+            props.setPassword(passwordBytes);
+            PdfReader reader = new PdfReader(this.filename, props);
+            PdfDocument pdfDoc = new PdfDocument(reader);
+            pdfDoc.close();
             return true;
-        } catch (BadPasswordException e) {
+        } catch (Exception e) {
             return false;
         }
 
@@ -81,7 +113,7 @@ class PdfCracker {
      */
     String crackViaWordlistFile(String wordlistFile) throws IOException {
 
-        //go through every password int the file til we find it
+        //go through every password in the file until we find it
         BufferedReader words = new BufferedReader(new FileReader(wordlistFile));
         String password;
 
@@ -190,6 +222,15 @@ class PdfCracker {
         }
 
         return null;
+
+    }
+
+    /**
+     * Main Test Driver Program to crack password using iText 7
+     * No command-line args provided
+     * @param args
+     */
+    public static void main(String[] args) {
 
     }
 
