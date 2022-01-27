@@ -28,15 +28,15 @@ Introduced by the original author in [this blog post](http://seejohncode.com/201
 
 ### Dependencies
 
-* iText
+* iText 7
 * BouncyCastle
 
 ---
 
-### Author
+### Author(s)
 
 * John Crepezzi [john.crepezzi@gmail.com](mailto:john.crepezzi@gmail.com)
-
+* Tony Castrogiovanni [afarentino@gmail.com](mailto:afarentino@gmail.com)
 ---
 
 ### License
